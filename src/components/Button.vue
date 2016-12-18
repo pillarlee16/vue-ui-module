@@ -1,15 +1,17 @@
 <template>
 <div class="button" v-on:mouseover="focusIn" v-on:mouseleave="focusOut">
-  {{ value }}
+  {{ value }} {{ time }}
 </div>
 </template>
 <script>
+import _ from 'lodash';
 import { TweenMax, Elastic, Expo } from 'gsap';
 
 export default {
   data() {
     return {
-      value: 'Click',
+      time : _.now(),
+      value: 'Click : ',
     };
   },
   methods: {
