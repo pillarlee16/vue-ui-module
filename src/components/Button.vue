@@ -5,7 +5,8 @@
 </template>
 <script>
 import _ from 'lodash';
-import { TweenMax, Elastic, Expo } from 'gsap';
+
+import motion from '../libs/motion';
 
 export default {
   data() {
@@ -17,17 +18,17 @@ export default {
   methods: {
     focusIn() {
       const buttonEl = this.$el;
-      TweenMax.to(buttonEl, 1.1, {
+      motion.engine.to(buttonEl, 1.1, {
         scale: 1.25,
-        ease: Elastic.easeOut,
+        ease: motion.curve.Elastic.easeOut,
         easeParams: [3, 2],
       });
     },
     focusOut() {
       const buttonEl = this.$el;
-      TweenMax.to(buttonEl, 0.85, {
+      motion.engine.to(buttonEl, 0.85, {
         scale: 1.0,
-        ease: Expo.easeOut,
+        ease: motion.curve.Expo.easeOut,
       });
     },
   },
