@@ -1,14 +1,33 @@
 <template>
-<div class="button">
+<div class="button" v-on:mouseover="focusIn" v-on:mouseleave="focusOut">
   {{ value }}
 </div>
 </template>
 <script>
+import { TweenMax, Elastic, Expo } from 'gsap';
+
 export default {
   data() {
     return {
       value: 'Click',
     };
+  },
+  methods: {
+    focusIn() {
+      const buttonEl = this.$el;
+      TweenMax.to(buttonEl, 1.1, {
+        scale: 1.25,
+        ease: Elastic.easeOut,
+        easeParams: [3, 2],
+      });
+    },
+    focusOut() {
+      const buttonEl = this.$el;
+      TweenMax.to(buttonEl, 0.85, {
+        scale: 1.0,
+        ease: Expo.easeOut,
+      });
+    },
   },
 };
 </script>
